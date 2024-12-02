@@ -1,7 +1,20 @@
-const App = () => {
+import { createEffect } from "solid-js";
+import { theme } from "./utils/themeStore";
+import Footer from "./components/Footer/footer";
+import Navbar from "./components/Navbar/navbar";
+
+const App = (props) => {
+  createEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme.value);
+  });
+
   return (
     <>
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
+      <Navbar />
+
+      <div className="min-h-screen">{props.children}</div>
+
+      <Footer />
     </>
   );
 };
