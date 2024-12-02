@@ -5,11 +5,11 @@ const Footer = (props) => {
     <>
       <footer className="footer footer-center bg-base-200 text-base-content rounded p-10">
         <nav className="flex flex-col lg:flex-row gap-4">
-          <a href="#" className="link link-hover">
-            About Us
+          <a href="/#about" className="link link-hover">
+            About
           </a>
-          <a href="#" className="link link-hover">
-            Contact Us
+          <a href="/#contact" className="link link-hover">
+            Contact
           </a>
           <a href="#" className="link link-hover">
             Terms & Conditions

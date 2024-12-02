@@ -6,23 +6,19 @@ const NavLinksTwo = (props) => {
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-40 p-2 shadow mt-5 border"
       >
         <li>
-          <a>Item 1</a>
+          <a href="/#coach">Coach</a>
         </li>
         <li>
-          <details open>
-            <summary>Parent</summary>
-            <ul className="p-2">
-              <li>
-                <a>Submenu 1</a>
-              </li>
-              <li>
-                <a>Submenu 2</a>
-              </li>
-            </ul>
-          </details>
+          <a href="/#quiz">Quiz</a>
         </li>
         <li>
-          <a>Item 3</a>
+          <a href="/#about">About</a>
+        </li>
+        <li>
+          <a href="/#faqs">FAQs</a>
+        </li>
+        <li>
+          <a href="/#contact">Contact</a>
         </li>
       </ul>
     </>
