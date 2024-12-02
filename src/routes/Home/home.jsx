@@ -16,7 +16,9 @@ const contactUs = async (data) => {
     body: JSON.stringify(data),
   };
 
-  const url = `${backend}/api/v1/company/contact-us`;
+  const url = `${
+    backend || "https://quiz-app-backend.up.railway.app"
+  }/api/v1/company/contact-us`;
 
   try {
     const response = await fetch(url, options);
