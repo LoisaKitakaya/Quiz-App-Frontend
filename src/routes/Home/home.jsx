@@ -16,9 +16,7 @@ const contactUs = async (data) => {
     body: JSON.stringify(data),
   };
 
-  const url = `${
-    backend || "https://quiz-app-backend.up.railway.app"
-  }/api/v1/company/contact-us`;
+  const url = `${backend}/api/v1/company/contact-us`;
 
   try {
     const response = await fetch(url, options);
@@ -114,7 +112,7 @@ const Home = () => {
             </p>
 
             <a
-              href="#"
+              href="/coach"
               className="btn btn-primary w-full flex justify-between items-center"
             >
               <span>Talk to a relationship coach</span>
@@ -158,7 +156,7 @@ const Home = () => {
             </p>
 
             <a
-              href="#"
+              href="/quiz"
               className="btn btn-primary w-full flex justify-between items-center"
             >
               <span>Take the quiz now</span>
