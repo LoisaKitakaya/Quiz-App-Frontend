@@ -123,6 +123,12 @@ const Quiz = () => {
                   return (
                     <div className="flex justify-center items-center pt-56">
                       <div className="text-center">
+                        <button
+                          className="btn btn-sm bg-base-300 w-full mb-4"
+                          onClick={refetchTableData}
+                        >
+                          Refresh Data
+                        </button>
                         <p className="text-2xl font-semibold mb-4">
                           No quizzes found
                         </p>
