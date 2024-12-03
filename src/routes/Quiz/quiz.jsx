@@ -124,7 +124,7 @@ const Quiz = () => {
                     <div className="flex justify-center items-center pt-56">
                       <div className="text-center">
                         <p className="text-2xl font-semibold mb-4">
-                          No records found
+                          No quizzes found
                         </p>
                       </div>
                     </div>
