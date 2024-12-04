@@ -85,18 +85,20 @@ const Quiz = () => {
                 if (data.length > 0) {
                   return (
                     <>
-                      <button
-                        className="btn btn-sm bg-base-300 w-full mb-4"
-                        onClick={refetchTableData}
-                      >
-                        Refresh Data
-                      </button>
+                      <div className="px-4">
+                        <button
+                          className="btn btn-sm bg-base-300 w-full mb-4"
+                          onClick={refetchTableData}
+                        >
+                          Refresh Data
+                        </button>
+                      </div>
 
                       <h1 className="text-xl font-semibold text-center">
                         Available Quizzes
                       </h1>
 
-                      <div className="p-4 flex flex-col lg:flex-row justify-start items-center">
+                      <div className="p-4 flex flex-col lg:flex-row gap-4 items-center">
                         <For each={data}>
                           {(item) => (
                             <a href={`${quizApp}/quizzes/${item?.id}`}>
@@ -104,7 +106,8 @@ const Quiz = () => {
                                 <figure>
                                   <img
                                     className="h-1/2"
-                                    src={CardImage}
+                                    // src={CardImage}
+                                    src="https://picsum.photos/400/200"
                                     alt="card image"
                                   />
                                 </figure>
