@@ -102,7 +102,7 @@ const Quiz = () => {
                         <For each={data}>
                           {(item) => (
                             <a href={`${quizApp}/quizzes/${item?.id}`}>
-                              <div className="card bg-base-100 image-full w-full lg:w-96 shadow-xl">
+                              <div className="card bg-base-100 image-full w-full lg:w-96 shadow z-0">
                                 <figure>
                                   <img
                                     className="h-1/2"
