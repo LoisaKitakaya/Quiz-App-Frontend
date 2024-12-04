@@ -11,10 +11,10 @@ const Footer = (props) => {
           <a href="/#contact" className="link link-hover">
             Contact
           </a>
-          <a href="#" className="link link-hover">
+          <a href="/terms" className="link link-hover">
             Terms & Conditions
           </a>
-          <a href="#" className="link link-hover">
+          <a href="/policy" className="link link-hover">
             Privacy Info
           </a>
         </nav>
