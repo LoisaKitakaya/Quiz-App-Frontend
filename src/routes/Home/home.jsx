@@ -1,6 +1,13 @@
 import toast from "solid-toast";
-import { createSignal } from "solid-js";
-import { backend } from "../../utils/secrets";
+import {
+  createResource,
+  createSignal,
+  Match,
+  Show,
+  Suspense,
+  Switch,
+} from "solid-js";
+import { backend, quizApp } from "../../utils/secrets";
 import { siteTitle } from "../../utils/siteInfo";
 import { getErrorMessage } from "../../utils/responses";
 import Metadata from "../../components/Metadata/metadata";
@@ -9,6 +16,34 @@ import ImageOne from "../../assets/img_1-removebg-preview.png";
 import OurPlatform from "../../assets/icons8-platform-100.png";
 import OurVision from "../../assets/icons8-real-estate-100.png";
 import WhoWeAre from "../../assets/icons8-question-mark-100.png";
+
+const fetchQuiz = async () => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const url = `${backend}/api/v1/quiz/`;
+
+  try {
+    const response = await fetch(url, options);
+
+    const res = await response.json();
+
+    if (response.status >= 400) {
+      return {
+        status: response.status,
+        message: res?.detail ? res?.detail : getErrorMessage(response.status),
+      };
+    }
+
+    return res;
+  } catch (err) {
+    throw new Error("Something went wrong: " + err);
+  }
+};
 
 const contactUs = async (data) => {
   const options = {
@@ -40,6 +75,8 @@ const contactUs = async (data) => {
   }
 };
 const Home = () => {
+  const [quizData] = createResource(fetchQuiz);
+
   const [contactUsData, setContactUsData] = createSignal({
     first_name: "",
     last_name: "",
@@ -86,6 +123,17 @@ const Home = () => {
       setLoading(false);
     }
   };
+
+  const placeHolderLink = (
+    <a
+      href=""
+      className="btn btn-primary w-full flex justify-between items-center"
+    >
+      <span>Take the quiz now</span>
+      <i class="bi bi-caret-right-fill"></i>
+    </a>
+  );
+
   return (
     <>
       <Metadata title="Home" />
@@ -155,13 +203,17 @@ const Home = () => {
               temporibus deserunt consequuntur! Inventore.
             </p>
 
-            <a
-              href="/quiz"
-              className="btn btn-primary w-full flex justify-between items-center"
-            >
-              <span>Take the quiz now</span>
-              <i class="bi bi-caret-right-fill"></i>
-            </a>
+            <Suspense fallback={placeHolderLink}>
+              <Show when={quizData()}>
+                <a
+                  href={`${quizApp}/quizzes/${quizData()?.id}`}
+                  className="btn btn-primary w-full flex justify-between items-center"
+                >
+                  <span>Take the quiz now</span>
+                  <i class="bi bi-caret-right-fill"></i>
+                </a>
+              </Show>
+            </Suspense>
           </div>
         </div>
       </div>
